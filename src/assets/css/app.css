@@ -1,0 +1,16 @@
+
+.header, .footer { 
+    background-color: rgb(58, 140, 202);
+}
+
+.header { 
+    height: 15vh;
+}
+
+.footer { 
+    height: 15vh;
+}
+
+.main {
+    min-height: 70vh;
+}

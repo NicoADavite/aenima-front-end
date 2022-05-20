@@ -1,0 +1,55 @@
+.header {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo-figure{    
+    height: 60%;
+    width: 30%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.header-logo{
+    height: 90%;
+    border-radius: 25px;
+}
+
+.header-nav-bar {
+    height: 35%;
+    width: 100%;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-items: stretch;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.header-nav-bar ul {
+    list-style: none;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.header-nav-bar ul li a{
+    text-decoration: none;
+}
+
+.header-nav-bar ul li a:visited{
+    color: #fff;
+}
+
+.header-nav-bar ul li a:link{
+    color: #fff;
+}
+/* .lupa {
+
+} */

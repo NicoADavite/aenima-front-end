@@ -9,8 +9,7 @@ This project was created with [Create React App](https://github.com/facebook/cre
     tools: "React.js, React-Router-Dom-V5, Hooks, CSS",
     "scripts": {
         "start": "npm start"
-    }
-    
+    }    
 ```
 
 ## Available Scripts

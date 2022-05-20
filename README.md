@@ -2,6 +2,17 @@
 
 This project was created with [Create React App](https://github.com/facebook/create-react-app).
 
+```
+    "author": "Nicolás Alceo Davite ",
+    "description": "Aplicación de front-end para el challenge Full Stack de AENIMA",
+    version: "0.0.1",
+    tools: "React.js, React-Router-Dom-V5, Hooks, CSS",
+    "scripts": {
+        "start": "npm start"
+    }
+    
+```
+
 ## Available Scripts
 
 In the project directory, you can run:

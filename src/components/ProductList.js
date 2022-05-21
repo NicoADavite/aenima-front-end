@@ -29,7 +29,7 @@ function ProductList() {
               return (
                 <article className="product-card" key={i}>
                   <figure>
-                      <img src={`https://aenima-back-end.herokuapp.com/${product.imageUrl}`} alt="imagen-producto" />
+                      <img src={`https://aenima-back-end.herokuapp.com${product.imageUrl}`} alt="imagen-producto" />
                   </figure>
                   <h2 className="article-name">{product.name}</h2>
                   <p  className="article-price">${product.price}</p>

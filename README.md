@@ -16,6 +16,10 @@ This project was created with [Create React App](https://github.com/facebook/cre
 
 In the project directory, you can run:
 
+### `npm install`
+
+To download on your device all the necessary dependencies to run the project.\
+
 ### `npm start`
 
 Runs the app in the development mode.\

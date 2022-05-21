@@ -52,10 +52,14 @@ function CreateNewProduct() {
 
     let settings = {
       "method": "POST",
+      // "headers": {
+      //   "Content-Type": "application/json",
+      //   "Accept": "application/json"
+      // },
       "body": formInfo
     }
 
-    fetch("http://localhost:3001/api/products/store", settings)
+    fetch("https://aenima-back-end.herokuapp.com/api/products/store", settings)
       .then(response => response.json())
       .then(info => {
         // console.log(info);

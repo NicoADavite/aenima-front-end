@@ -23,7 +23,7 @@ function SearchForm() {
 
     keyword = keywordInputRef.current.value;
 
-    fetch("http://localhost:3001/api/products/search?keyword=" + keyword)
+    fetch("https://aenima-back-end.herokuapp.com/api/products/search?keyword=" + keyword)
       .then(response => response.json())
       .then(data => {
         tituloActualizado.current.innerText = "Buscar Productos por: " + keyword;
@@ -45,7 +45,7 @@ function SearchForm() {
       <h1 className="search-form-title" ref={tituloActualizado}>Buscar Productos por:</h1>
       <form onSubmit={submitHandler} method="post">
         <input ref={ keywordInputRef } type="text" name="name" className="keyword-input" placeholder="ingrese una keyword"/>
-        <button type="submit" class="search-form-submit-btn" >BUSCAR</button>
+        <button type="submit" className="search-form-submit-btn" >BUSCAR</button>
       </form>
       {
         products.length > 0 ? (
@@ -55,7 +55,7 @@ function SearchForm() {
                 return(
                   <article className="product-card" key={i}>
                   <figure>
-                      <img src={`http://localhost:3001/${product.imageUrl}`} alt="imagen-producto" />
+                      <img src={`https://aenima-back-end.herokuapp.com/${product.imageUrl}`} alt="imagen-producto" />
                   </figure>
                   <h2 className="article-name">{product.name}</h2>
                   <p  className="article-price">${product.price}</p>

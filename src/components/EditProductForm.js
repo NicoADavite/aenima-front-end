@@ -14,7 +14,7 @@ function EditProductForm (){
     const imageInputRef = useRef();
 
     useEffect(() => {
-        fetch("http://localhost:3001/api/products/" + id)
+        fetch("https://aenima-back-end.herokuapp.com/api/products/" + id)
             .then(response => response.json())
             .then(data => {
                 console.log(data.product);
@@ -65,7 +65,7 @@ function EditProductForm (){
           "body": formInfo
         }
       
-        fetch(`http://localhost:3001/api/products/update/${id}`, settings)
+        fetch(`https://aenima-back-end.herokuapp.com/api/products/update/${id}`, settings)
           .then(response => response.json())
           .then(info => {
             console.log(info);

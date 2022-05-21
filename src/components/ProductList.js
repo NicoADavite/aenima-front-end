@@ -6,7 +6,7 @@ function ProductList() {
   const [ products, setProducts ] = useState([])
 
   useEffect(() => {
-    fetch("http://localhost:3001/api/products/")
+    fetch("https://aenima-back-end.herokuapp.com/api/products/")
       .then(response => response.json())
       .then(data => {
         console.log(data.products);
@@ -29,7 +29,7 @@ function ProductList() {
               return (
                 <article className="product-card" key={i}>
                   <figure>
-                      <img src={`http://localhost:3001/${product.imageUrl}`} alt="imagen-producto" />
+                      <img src={`https://aenima-back-end.herokuapp.com/${product.imageUrl}`} alt="imagen-producto" />
                   </figure>
                   <h2 className="article-name">{product.name}</h2>
                   <p  className="article-price">${product.price}</p>

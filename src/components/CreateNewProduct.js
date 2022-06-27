@@ -5,11 +5,14 @@ function CreateNewProduct() {
 
   const history = useHistory();
 
+  const inputFieldsRef = useRef();
   const nameInputRef = useRef();
   const descInputRef = useRef();
   const priceInputRef = useRef();
   const brandInputRef = useRef();
   const imageInputRef = useRef();
+  const loadingRef = useRef();
+  const submitButtonRef = useRef();
 
   const mostrarFileName = (e) => {
     const fileNameDiv = document.querySelector('.new-product-image-filename');
@@ -23,23 +26,25 @@ function CreateNewProduct() {
 
     e.preventDefault();
 
-    // console.log(imageInputRef.current.files[0]);
-
     if (!nameInputRef.current.value) {
-      return alert('Debes subir un nombre')    
+      return alert('Debes subir un nombre');
     }
     if (!descInputRef.current.value) {
-      return alert('Debes subir una descripción')    
+      return alert('Debes subir una descripción');    
     }
     if (!priceInputRef.current.value) {
-      return alert('Debes subir un precio')    
+      return alert('Debes subir un precio');    
     }
     if (!brandInputRef.current.value) {
-      return alert('Debes subir una marca')    
+      return alert('Debes subir una marca');    
     }
     if (!imageInputRef.current.files[0]) {
-      return alert('Debes subir una imagen')    
+      return alert('Debes subir una imagen');    
     }
+
+    submitButtonRef.current.disabled = true;
+    inputFieldsRef.current.classList.add("hidden");
+    loadingRef.current.classList.remove("hidden");
 
     let formInfo = new FormData();
     formInfo.append('name', nameInputRef.current.value);
@@ -59,6 +64,7 @@ function CreateNewProduct() {
       "body": formInfo
     }
 
+    // fetch("http://localhost:3001/api/products/store", settings)
     fetch("https://aenima-back-end.herokuapp.com/api/products/store", settings)
       .then(response => response.json())
       .then(info => {
@@ -66,7 +72,12 @@ function CreateNewProduct() {
         if (!info.Error) {
           history.push("/our-products");          
         } else {
-          alert('No se pudo crear el archivo')
+          submitButtonRef.current.disabled = false;
+          inputFieldsRef.current.classList.remove("hidden");
+          loadingRef.current.classList.add("hidden");
+          setTimeout(() => {
+            alert('NO SE PUDO CREAR EL PRODUCTO, INTENTE NUEVAMENTE!');            
+          }, 30);
         }
       })
   }
@@ -75,6 +86,8 @@ function CreateNewProduct() {
     <>
         <h1 className="main-title">Formulario de Creación de Productos</h1>
         <form className="create-product-form" onSubmit={ enviarFomulario }>
+
+          <div className="input-fields" ref={inputFieldsRef}>
 
             <label>Nombre:</label>
             <input type="text" name="name" ref={ nameInputRef }/>
@@ -92,7 +105,15 @@ function CreateNewProduct() {
             <div className="new-product-image-filename"></div>
             <input type="file" ref={imageInputRef} name="image" id="new-product-image-input" accept="image/*" onChange={mostrarFileName}/>
 
-            <button type="submit" className="new-product-submit-button">Enviar Formulario</button>
+          </div>
+          
+          <div ref={loadingRef} className="loading-div hidden">
+            <span  className="loader"></span>
+            <span className="loader-msg">Creando producto...</span>            
+          </div>
+          
+
+          <button type="submit" ref={submitButtonRef} className="new-product-submit-button">Enviar Formulario</button>
         </form>     
     </>
   );

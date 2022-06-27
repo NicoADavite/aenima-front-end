@@ -10,12 +10,12 @@ function DeleteProductForm(){
     const [ product, setProduct ] = useState({});
 
     useEffect(() => {
+        // fetch(`http://localhost:3001/api/products/${id}`)
         fetch(`https://aenima-back-end.herokuapp.com/api/products/${id}`)
             .then(response => response.json())
             .then(data => {
                 setProduct(data.product);
             })
-        
     }, [])
 
     useEffect(() => {
@@ -25,6 +25,7 @@ function DeleteProductForm(){
                 "method": "DELETE"
             }
 
+            // fetch(`http://localhost:3001/api/products/delete/${id}`, settings)
             fetch(`https://aenima-back-end.herokuapp.com/api/products/delete/${id}`, settings)
                 .then(response => response.json())
                 .then(data => {

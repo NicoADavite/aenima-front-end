@@ -6,6 +6,7 @@ import { useParams, Link } from 'react-router-dom';
 function ProductDetail(){
 
     const [ product, setProduct ] = useState({});
+    const [ buscado, setBuscado ] = useState(false);
 
     const { id } = useParams();
 
@@ -18,6 +19,7 @@ function ProductDetail(){
                 if (data.product) {
                     setProduct(data.product);                    
                 } else {
+                    setBuscado(true)
                     setProduct({});
                 }
             })
@@ -45,12 +47,19 @@ function ProductDetail(){
         )
         :
         (
-            <div className="product-details-not-found">
-                <h1>No pudimos encontrar este producto</h1>
-                <Link to="/our-products">
-                    Vuelva a nuestra lista de productos
-                </Link>
-            </div>
+            buscado === true ? (
+                <div className="product-details-not-found">
+                    <h1>No pudimos encontrar este producto</h1>
+                    <Link to="/our-products">
+                        Vuelva a nuestra lista de productos
+                    </Link>
+                </div> 
+            ) : (
+                <div className="product-details-loading">
+                    <h1>Buscando este producto</h1>
+                    <span className="product-loader"></span>
+                </div> 
+            )
         )  
 
         

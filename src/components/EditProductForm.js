@@ -1,10 +1,11 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useHistory } from "react-router-dom";
+import { Link, useParams, useHistory } from "react-router-dom";
 
 function EditProductForm (){
     const { id } = useParams();
     const history = useHistory();
     
+    const [ buscado, setBuscado ] = useState(false);
     const [ product , setProduct ] = useState({});
 
     const inputFieldsRef = useRef();
@@ -25,6 +26,7 @@ function EditProductForm (){
                 if (data.product) {
                     setProduct(data.product);                    
                 } else {
+                    setBuscado(true)
                     setProduct({});
                 }
             })
@@ -126,9 +128,19 @@ function EditProductForm (){
         )
         :
         (
-            <div className="product-detail">
-                NO HAY UN PRODUCTO
-            </div>
+            buscado === true ? (
+              <div className="product-details-not-found">
+                  <h1>Lo sentimos, no se encontró el producto</h1>
+                  <Link to="/our-products">
+                    Vuelva a nuestra lista de productos
+                  </Link>
+              </div>
+            ) : (
+              <div className="product-details-loading">
+                <h1>Cargando detalles del producto</h1>
+                <span className="product-loader"></span>
+              </div>
+            )
         )
     )
 }

@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 function ProductList() {
 
+  const [ buscado, setBuscado ] = useState(false);
   const [ products, setProducts ] = useState([])
 
   useEffect(() => {
@@ -14,6 +15,7 @@ function ProductList() {
         if(data.products){
           setProducts(data.products);
         }else{
+          setBuscado(true)
           setProducts([]);
         }
       })
@@ -44,10 +46,17 @@ function ProductList() {
               )               
             }) 
           ) : (
-            <div className="product-details-not-found">
-              <h2>no hay productos en la base de datos</h2>
-              <Link to="/create-new-product"> Por favor crea un nuevo producto</Link>
-            </div>
+            buscado === true ? (
+              <div className="product-details-not-found">
+                <h2>No hay productos en la base de datos</h2>
+                <Link to="/create-new-product"> Por favor crea un nuevo producto</Link>
+              </div>
+            ) : (
+              <div className="product-details-loading">
+                <h1>Buscando...</h1>
+                <span className="product-loader"></span>
+              </div>
+            )
           )
         }
       </section>

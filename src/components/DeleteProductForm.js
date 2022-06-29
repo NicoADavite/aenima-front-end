@@ -11,7 +11,7 @@ function DeleteProductForm(){
 
     useEffect(() => {
         // fetch(`http://localhost:3001/api/products/${id}`)
-        fetch(`https://aenima-back-end.herokuapp.com/api/products/${id}`)
+        fetch(`https://aenima-back-end-production.up.railway.app/api/products/${id}`)
             .then(response => response.json())
             .then(data => {
                 setProduct(data.product);
@@ -26,7 +26,7 @@ function DeleteProductForm(){
             }
 
             // fetch(`http://localhost:3001/api/products/delete/${id}`, settings)
-            fetch(`https://aenima-back-end.herokuapp.com/api/products/delete/${id}`, settings)
+            fetch(`https://aenima-back-end-production.up.railway.app/api/products/delete/${id}`, settings)
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);

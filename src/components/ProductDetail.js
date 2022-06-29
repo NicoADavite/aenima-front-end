@@ -12,7 +12,7 @@ function ProductDetail(){
 
     useEffect(() => {
         // fetch("http://localhost:3001/api/products/" + id)
-        fetch("https://aenima-back-end.herokuapp.com/api/products/" + id)
+        fetch("https://aenima-back-end-production.up.railway.app/api/products/" + id)
             .then(response => response.json())
             .then(data => {
                 // console.log(data.product);
@@ -32,7 +32,7 @@ function ProductDetail(){
             <div className="product-details">
                 <figure className="product-detail-figure">
                     {/* <img src={`http://localhost:3001${product.imageUrl}`} alt="imagen-producto" /> */}
-                    <img src={`https://aenima-back-end.herokuapp.com${product.imageUrl}`} alt="imagen-producto" />
+                    <img src={`https://aenima-back-end-production.up.railway.app${product.imageUrl}`} alt="imagen-producto" />
                 </figure>
                 <div className="product-detail-div">
                     <h2 className="product-detail-name">{product.name}</h2>

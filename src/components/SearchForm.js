@@ -23,7 +23,7 @@ function SearchForm() {
 
     keyword = keywordInputRef.current.value;
 
-    fetch("https://aenima-back-end.herokuapp.com/api/products/search?keyword=" + keyword)
+    fetch("https://aenima-back-end-production.up.railway.app/api/products/search?keyword=" + keyword)
       .then(response => response.json())
       .then(data => {
         tituloActualizado.current.innerText = "Buscar Productos por: " + keyword;
@@ -55,7 +55,7 @@ function SearchForm() {
                 return(
                   <article className="product-card" key={i}>
                   <figure>
-                      <img src={`https://aenima-back-end.herokuapp.com/${product.imageUrl}`} alt="imagen-producto" />
+                      <img src={`https://aenima-back-end-production.up.railway.app/${product.imageUrl}`} alt="imagen-producto" />
                   </figure>
                   <h2 className="article-name">{product.name}</h2>
                   <p  className="article-price">${product.price}</p>
